@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title %}
+		<title>
+			User-Auth-{{title}}
+		</title>
+	{% else %}
+		<title>
+			User-Auth
+		</title>
+	{% endif %}
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'users/style.css' %} ">
+</head>
+<body>
+	<div class = 'main-page'>
+		<div class = 'main-navbar'>
+			<a href="#">Auth-Manager</a>
+			<nav class = 'navbar'>
+				<ul class = "nav-list">
+					<li class = 'list-item'><a href = "{% url 'home-page' %}">Home</a></li>
+					<li class = 'list-item'><a href = "#">Explore</a></li>
+					<li class = 'list-item'><a href = "#">AboutUs</a></li>
+					{% if user.is_authenticated %}
+						<li class = 'list-item'><a href = "{% url 'profile' %}">Profile</a></li>
+						<li class = 'list-item'><a href = "{% url 'logout' %}">LogOut</a></li>
+					{% else %}
+						<li class = 'list-item'><a href = "{% url 'login' %}">LogIn</a></li>
+						<li class = 'list-item'><a href = "{% url 'register' %}">Register</a></li>
+					{% endif %}
+					
+				</ul>
+			</nav>
+		</div>
+		<div class = "flash-msg">
+			{% if messages %}
+				{% for message in messages %}
+				<div class = 'alert'>
+					{{message}}
+				</div>
+				{% endfor %}
+			{% endif %}
+		</div>	
+		<div class = "main-content">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</div>
+</body>
+</html>
