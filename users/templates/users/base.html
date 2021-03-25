@@ -21,8 +21,8 @@
 			<nav class = 'navbar'>
 				<ul class = "nav-list">
 					<li class = 'list-item'><a href = "{% url 'home-page' %}">Home</a></li>
-					<li class = 'list-item'><a href = "#">Explore</a></li>
-					<li class = 'list-item'><a href = "#">AboutUs</a></li>
+					<!-- <li class = 'list-item'><a href = "#">Explore</a></li>
+					<li class = 'list-item'><a href = "#">AboutUs</a></li> -->
 					{% if user.is_authenticated %}
 						<li class = 'list-item'><a href = "{% url 'profile' %}">Profile</a></li>
 						<li class = 'list-item'><a href = "{% url 'logout' %}">LogOut</a></li>
